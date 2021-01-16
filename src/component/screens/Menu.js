@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     container: {flex: 1}
 })
 
-const Menu = ()=>{
+const Menu = ({navigation})=>{
     const scrollX = new Animated.Value(0);
     return(
     <View style={styles.container}>
@@ -22,7 +22,7 @@ const Menu = ()=>{
         </View> 
         <View style={{height:height/3, marginLeft:20, marginRight: 20, marginTop: 20}}>
             <Text style={{fontSize: 25, fontWeight: 'bold', color: '#ff8080'}}>Popular Choices</Text>
-            <ProductSlider data={productSliderData} direction={true} sizeh={1.5} sizev={5.5} direct='column'></ProductSlider>
+            <ProductSlider onPress={()=>{navigation.navigate('Welcome')}} data={productSliderData} direction={true} sizeh={1.5} sizev={5.5} direct='column'></ProductSlider>
         </View> 
         <View style={{height:height/2, marginLeft:20, marginRight: 20}}>
             <Text style={{fontSize: 25, fontWeight: 'bold', color: '#ff8080'}}>New Restaurants</Text>

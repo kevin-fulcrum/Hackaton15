@@ -22,7 +22,7 @@ const styles=StyleSheet.create({
     },
 })
 
-const Welcome = ()=>{
+const Welcome = ({navigation})=>{
     return(
         <>
         <View style={styles.container}>
@@ -37,9 +37,9 @@ const Welcome = ()=>{
         <Text style={styles.text}>on the app after ordered</Text>
         </View>
         <View style={styles.margen}>    
-        <Button label={'Create Account'}></Button>
+        <Button label={'Create Account'} onPress={()=>{navigation.navigate('Create')}}></Button>
         </View>
-        <Button label={'Login'}></Button>
+        <Button label={'Login'} onPress={()=>{navigation.navigate('Login')}}></Button>
         </View>
         </>
     )

@@ -34,7 +34,7 @@ const styles=StyleSheet.create({
     }
 })
 
-const Login = ()=>{
+const Login = ({navigation})=>{
     return(
         <>
         <View style={styles.container}>
@@ -45,7 +45,7 @@ const Login = ()=>{
         <TextIn placeholder={'Email'}></TextIn>
         <TextIn placeholder={'Pasword'}></TextIn>
         <View style={styles.margen}>    
-        <Button label={'Log in'}></Button>
+        <Button label={'Log in'} onPress={()=>{navigation.navigate('Menu')}}></Button>
         </View>
         <View style={styles.margenText}>
         <Text style={styles.text}>Don't have an account?</Text>

@@ -26,7 +26,7 @@ const styles=StyleSheet.create({
     },
 })
 
-const Create = ()=>{
+const Create = ({navigation})=>{
     return(
         <>
         <View style={styles.container}>
@@ -39,7 +39,7 @@ const Create = ()=>{
         <TextIn placeholder={'Pasword'}></TextIn>
         <TextIn placeholder={'Phone'}></TextIn>
         <View style={styles.margen}>    
-        <Button label={'Log in'}></Button>
+        <Button label={'Log in'} onPress={()=>{navigation.navigate('Menu')}}></Button>
         </View>
         <View style={styles.margenText}>
         <Text style={styles.text}>By clicking Sing up you agree to the our</Text>
