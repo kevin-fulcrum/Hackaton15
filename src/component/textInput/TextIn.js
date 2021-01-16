@@ -1,29 +1,30 @@
 import React from 'react'
-import {Text, StyleSheet, TouchableOpacity} from 'react-native'
+import {TextInput, StyleSheet, View} from 'react-native'
 import {windowWidth,windowHeight} from '../functions/Dimensions'
 
 const styles=StyleSheet.create({
     container: {
-        backgroundColor: '#eb5c5c',
+        backgroundColor: '#ffffff',
         borderRadius: 80,
         width: windowWidth/1.4,
         height: windowHeight/20,
         justifyContent: 'center',
-        alignItems: 'center' 
+        marginVertical: 5
     },
     text: {
-        fontSize: 20,
+        fontSize: 15,
         color: '#ffffff',
+        marginLeft: 10
     }
 
 })
 
-const Button=({label})=>{
+const TextIn =({placeholder})=>{
   return(
-    <TouchableOpacity style={styles.container}>
-    <Text style={styles.text}>{label}</Text>
-    </TouchableOpacity>
+    <View style={styles.container}>
+    <TextInput placeholder={placeholder} style={styles.text}></TextInput>
+    </View>
   )
 };
 
-export default Button;
+export default TextIn;

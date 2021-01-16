@@ -1,9 +1,9 @@
 import React from 'react'
-import Welcome from './src/component/screens/Welcome'
+import StackInit from './src/component/navigation/StackInit'
 
 const App=()=>{
   return(
-    <Welcome></Welcome>
+    <StackInit></StackInit>
   )
 };
 
