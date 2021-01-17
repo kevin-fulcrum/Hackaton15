@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View,StyleSheet,Image, Text } from 'react-native';
 import Button from '../button/Button'
 import Label from '../label/Label'
 import TextIn from '../textInput/TextIn'
 import {windowWidth,windowHeight} from '../functions/Dimensions'
+import UsuarioReducer from '../redux/Reducer'
+import {useDispatch,useSelector} from 'react-redux'
+import LoginUser from '../redux/Actions'
+
 
 const styles=StyleSheet.create({
     container: {
@@ -34,7 +38,24 @@ const styles=StyleSheet.create({
     }
 })
 
+const usuarios = [{
+    username: 'admin',
+    password: '123'
+}]
+
 const Login = ({navigation})=>{
+    const dispatch = useDispatch()
+    const result = useSelector((state)=>state.UsuarioReducer)
+    useEffect(()=>{
+        const userData= async()=>{
+            try{
+                dispatch(LoginUser(usuarios))
+            }catch(e){
+                console.warn(e)
+            }
+        }
+    },[dispatch])
+    console.warn(result)
     return(
         <>
         <View style={styles.container}>
