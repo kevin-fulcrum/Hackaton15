@@ -13,16 +13,16 @@ const styles=StyleSheet.create({
     },
     text: {
         fontSize: 15,
-        color: '#ffffff',
-        marginLeft: 10
+        marginLeft: 10,
+        color: '#040405'
     }
 
 })
 
-const TextIn =({placeholder})=>{
+const TextIn =({placeholder,onChangeText})=>{
   return(
     <View style={styles.container}>
-    <TextInput placeholder={placeholder} style={styles.text}></TextInput>
+    <TextInput onChangeText={onChangeText} placeholder={placeholder} style={styles.text}></TextInput>
     </View>
   )
 };

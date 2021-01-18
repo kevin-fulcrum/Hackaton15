@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
-import { View,StyleSheet,Image, Text } from 'react-native';
+import React, { useState } from 'react'
+import { View,StyleSheet, Text } from 'react-native';
 import Button from '../button/Button'
 import Label from '../label/Label'
 import TextIn from '../textInput/TextIn'
 import {windowWidth,windowHeight} from '../functions/Dimensions'
-import UsuarioReducer from '../redux/Reducer'
 import {useDispatch,useSelector} from 'react-redux'
 import LoginUser from '../redux/Actions'
 
@@ -38,24 +37,27 @@ const styles=StyleSheet.create({
     }
 })
 
-const usuarios = [{
-    username: 'admin',
-    password: '123'
-}]
-
 const Login = ({navigation})=>{
+    const [usuario, setUsuario] = useState('');
+    const [clave, setClave] = useState('');
+
+
+
     const dispatch = useDispatch()
     const result = useSelector((state)=>state.UsuarioReducer)
-    useEffect(()=>{
-        const userData= async()=>{
-            try{
-                dispatch(LoginUser(usuarios))
-            }catch(e){
-                console.warn(e)
-            }
+    
+    const Ingresar =()=>{
+        dispatch(LoginUser({
+            username: usuario,
+            password: clave
+        }))
+        if(result.datos.listUser[0].usuario===usuario && result.datos.listUser[0].contra===clave){
+            navigation.navigate('Menu')
+        }else{
+            console.warn('usuario o contraseña incorrecta')
         }
-    },[dispatch])
-    console.warn(result)
+    };
+    console.warn('result', result)
     return(
         <>
         <View style={styles.container}>
@@ -63,10 +65,10 @@ const Login = ({navigation})=>{
         <Label text={'Log in to your'}></Label>
         <Label text={'account'}></Label>
         </View>
-        <TextIn placeholder={'Email'}></TextIn>
-        <TextIn placeholder={'Pasword'}></TextIn>
+        <TextIn placeholder={'Email'} onChangeText={(e)=>{setUsuario(e)}}></TextIn>
+        <TextIn placeholder={'Pasword'} onChangeText={(e)=>{setClave(e)}}></TextIn>
         <View style={styles.margen}>    
-        <Button label={'Log in'} onPress={()=>{navigation.navigate('Menu')}}></Button>
+        <Button label={'Log in'} onPress={()=>{Ingresar()}}></Button>
         </View>
         <View style={styles.margenText}>
         <Text style={styles.text}>Don't have an account?</Text>

@@ -1,6 +1,11 @@
 const initialState={
     datos: {
-        listUser:[],
+            listUser:[
+                {
+                usuario: 'admin',
+                contra: '123',           
+                }
+            ],
             newUser: {
                 username: '',
                 email: '',
@@ -10,10 +15,10 @@ const initialState={
     }
 }
 
-const UsuarioReducer = (state= initialState.datos, action) => {
+const UsuarioReducer = (state= initialState, action) => {
     switch(action.type) {
         case "LOGIN_USER":
-            return action.data;
+            return {...state, user: action};
     }
      
     return state;
